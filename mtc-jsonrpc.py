@@ -476,7 +476,7 @@ def GetOTPStatus():
 def SetupOTP():
 	global ip
 	ip.CheckAccess()
-	local.AddLog("start SetupOTP function", "debug")
+	local.add_log("start SetupOTP function", "debug")
 	otpStatus = ton.GetSettings("jsonrpcOTP")
 	if otpStatus:
 		return "OTP already configured"
