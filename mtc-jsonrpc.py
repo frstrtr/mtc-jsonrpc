@@ -439,7 +439,7 @@ def UpdateMtc(args):
 	ip.CheckAccess()
 	runArgs = ["bash", "/usr/src/mytonctrl/scripts/update.sh"]
 	runArgs = SetArgsByArgs(runArgs, args)
-	exitCode = RunAsRoot(runArgs)
+	exitCode = run_as_root(runArgs)
 	if exitCode == 0:
 		text = "Update - {green}OK{endc}"
 	else:
@@ -455,7 +455,7 @@ def UpdateJR(args):
 	runArgs = ["bash", "/usr/src/mtc-jsonrpc/update.sh"]
 	runArgs = SetArgsByArgs(runArgs, args)
 
-	exitCode = RunAsRoot(runArgs)
+	exitCode = run_as_root(runArgs)
 	if exitCode == 0:
 		text = "Update - {green}OK{endc}"
 	else:
@@ -546,7 +546,7 @@ def SetWebPassword():
 	allowedIP = data_json[0]
 
 	ip = "0.0.0.0"
-	sslKeyPath = local.buffer["myWorkDir"] + "ssl"
+	sslKeyPath = local.buffer["my_work_dir"] + "ssl"
 	crtPath = sslKeyPath + ".crt"
 	keyPath = sslKeyPath + ".key"
 
@@ -554,8 +554,8 @@ def SetWebPassword():
 		make_ssl_devcert(sslKeyPath, host=ip)
 	#end if
 
-	runArgs = ["bash", "/usr/src/mtc-jsonrpc/setupProxy.sh", str(allowedIP), str(port), local.buffer["myWorkDir"]]
-	exitCode = RunAsRoot(runArgs)
+	runArgs = ["bash", "/usr/src/mtc-jsonrpc/setupProxy.sh", str(allowedIP), str(port), local.buffer["my_work_dir"]]
+	exitCode = run_as_root(runArgs)
 
 	print("Configuration complete.")
 	print("Now you can go to https://tonadmin.org")
@@ -587,7 +587,7 @@ def Init():
 	hostip = "127.0.0.1"
 
 	ip = "0.0.0.0"
-	sslKeyPath = local.buffer["myWorkDir"] + "ssl"
+	sslKeyPath = local.buffer["my_work_dir"] + "ssl"
 	crtPath = sslKeyPath + ".crt"
 	keyPath = sslKeyPath + ".key"
 
